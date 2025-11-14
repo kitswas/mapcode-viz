@@ -31,9 +31,6 @@ jobs:
         id: date
         run: echo "DATE=$(date +%Y-%m-%d-%H:%M)" >> $GITHUB_ENV
       - name: Release
-        uses: softprops/action-gh-release@v1
-        if: github.ref_type == 'tag'
+        uses: ncipollo/release-action@v1
         with:
-          name: "${{ github.ref_name }} — ${{ env.DATE }}"
-          files: |
-            main.pdf
+          artifacts: "*.pdf"
